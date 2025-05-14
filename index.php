@@ -18,9 +18,8 @@ $result=$conn->query($sql);
 <header class="header">    
         <a href="#" class="logo">Filhas de D.Helena</a>
         <nav class="navbar">             
+        <a href="#add-product">Adicionar produto</a>         
         <a href="#product">Produtos cadastrados</a>          
-        <a href="#clientes">Clientes cadastrados</a> 
-        <a href="./create.php">Adicionar produto</a>         
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>  
 </header>
@@ -32,8 +31,8 @@ $result=$conn->query($sql);
             <input class="box" type="text" name="livro" id="livro" placeholder="Livro">
             <label for="autor">Autor</label>
             <input class="box" type="text" name="autor" id="autor" placeholder="Autor">
-            <label for="genero">genero</label>
-            <input class="box" type="text" name="genero" id="genero" placeholder="genero">
+            <label for="genero">Gênero</label>
+            <input class="box" type="text" name="genero" id="genero" placeholder="Gênero">
             <label for="ano">Ano</label>
             <input class="box" type="number" name="ano" id="ano" placeholder="Ano">
             <input class="btn" type="submit" value="Enviar">
@@ -55,10 +54,10 @@ $result=$conn->query($sql);
             <?php while ($product=$result->fetch_assoc()):?>
             <tr>
                 <td><?=$product['id']?></td>
-                <td><?=$product['livr']?></td>
+                <td><?=$product['livro']?></td>
                 <td><?=$product['autor']?></td>
                 <td><?=$product['genero']?></td>
-                <td>R$ <?=$product['ano']?></td>
+                <td><?=$product['ano']?></td>
                 <td>
                 <a class="btn" href="update.php?id=<?= $produto['id'] ?>">Editar</a> 
                 <a class="delete-btn" href="delete.php?id=<?= $produto['id'] ?>" onclick="return confirm('Deseja deletar?')">Deletar</a>
