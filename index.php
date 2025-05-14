@@ -12,7 +12,7 @@ $result=$conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filhas de D.Helena</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./inc/resources/css/index.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
 <header class="header">    
@@ -24,18 +24,21 @@ $result=$conn->query($sql);
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>  
 </header>
-<section class="add" id="add">
-    <form action="inserir.php" method="post">
-        <label for="livro">Livro</label>
-        <input class="box" type="text" name="livro" id="livro" placeholder="Livro">
-        <label for="autor">Autor</label>
-        <input class="box" type="text" name="autor" id="autor" placeholder="Autor">
-        <label for="genero">genero</label>
-        <input class="box" type="text" name="genero" id="genero" placeholder="genero">
-        <label for="ano">Ano</label>
-        <input class="box" type="number" name="ano" id="ano" placeholder="Ano">
-        <input class="btn" type="submit" value="Enviar">
-    </form>
+<section class="add-product" id="add-product">
+    <div class="box">
+        <h1 class="heading">Adicionar Produto</h1>
+        <form action="inserir.php" method="post">
+            <label for="livro">Livro</label>
+            <input class="box" type="text" name="livro" id="livro" placeholder="Livro">
+            <label for="autor">Autor</label>
+            <input class="box" type="text" name="autor" id="autor" placeholder="Autor">
+            <label for="genero">genero</label>
+            <input class="box" type="text" name="genero" id="genero" placeholder="genero">
+            <label for="ano">Ano</label>
+            <input class="box" type="number" name="ano" id="ano" placeholder="Ano">
+            <input class="btn" type="submit" value="Enviar">
+        </form>
+    </div>
 
 </section>
 <section class="product" id="product">
@@ -49,7 +52,7 @@ $result=$conn->query($sql);
                 <th>Gênero</th>
                 <th>Ano</th>    
             </tr>
-            <?php while ($product-$result->fetch_assoc()):?>
+            <?php while ($product=$result->fetch_assoc()):?>
             <tr>
                 <td><?=$product['id']?></td>
                 <td><?=$product['livr']?></td>

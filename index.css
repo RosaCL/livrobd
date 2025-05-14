@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Playwrite+CU:wght@100..400&display=swap');
+:root{
+    --title-font: "Bodoni Moda", serif;
+    --geral-font: "Lora", serif;
+    --logo-font:"Playwrite CU", cursive;
+    --bg: #FAF9F6;
+    --bg2: #fff;
+    --letra:#333333;
+    --black:#444;
+    --botao:#3A606E;
+    --delete:#9b0f0f;
+    --botao-hover:#88b9cafd;
+    --delete-hover:#e94c4ce1;
+    --border: .1rem solid rgba(0,0,0,.1);
+    --border-hover: .1rem solid var(--black);
+    --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    list-style: none;
+    text-decoration: none;
+    outline: none;
+    transition: all .2s linear;
+    transition: width none;
+    font-family: var(--geral-font);
+}
+*::selection{
+    background-color: var(--botao);
+    color: var(--bg2);
+}
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 5rem;
+    scroll-behavior: smooth;
+}
+*::-webkit-scrollbar{
+    height: .5rem;
+    width: 1rem;
+}
+*::-webkit-scrollbar-track{
+    background: transparent;
+}
+*::-webkit-scrollbar-thumb{
+    background: var(--black);
+}
+body{
+    background: var(--bg);
+}
+.btn,
+.delete-btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 3rem;
+    border-radius: .5rem;
+    color: var(--bg2);    
+    font-size: 1.7rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+.btn{
+    background: var(--botao);
+}
+.delete-btn{
+    background: var(--delete);
+}
+.btn:hover{
+    background: var(--botao-hover);
+}
+.delete-btn:hover{
+    background: var(--delete-hover);
+}
+
+.section{
+    margin: 2rem;
+    padding: 2rem;
+}
+
+.heading{
+    font-size: 3rem;
+    color: var(--letra);
+    margin-bottom: 2rem;
+    text-align: center;    
+}
+h1{
+    font-family: var(--title-font);
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    background: var(--botao);
+    box-shadow: var(--box-shadow);
+}
+.header .logo{
+    font-family: var(--logo-font);
+    font-size: 2rem;
+    font-weight: bolder;
+    color: var(--bg);    
+}
+.header .logo i{
+    color: var(--bg);
+}
+.header .navbar a{      
+    font-size: 2rem;    
+    color: var(--bg2);
+    padding: 0 1.5rem;
+}
+.header .navbar a:hover{
+    color: var(--botao-hover);
+}
+
+
+#menu-btn{
+    font-size: 3rem;
+    color: var(--bg);
+    cursor: pointer;
+    display: none;
+}
+
+.add-product{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 15rem);
+}
+
+.add-product form{
+    background-color: var(--bg);
+    border-radius: .5rem;
+    border: var(--border);
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    width: 50rem;
+}
+.add-product form h3{
+    color: var(--letra);
+    padding-bottom: 1rem;
+    font-size: 2.5rem;
+    text-align: center;
+    font-family: var(--title-font);
+}
+
+.add-product form .box{
+    margin: 1rem 0;
+    padding: 1.4rem;
+    border-radius: .5rem;
+    background-color: var(--bg2);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    font-size: 1.8rem;
+    color: var(--letra);
+    width: 100%;
+}
+.add-product form .box:hover{
+    border: var(--border-hover);
+}
+.add-product form label{
+    padding-top: 1rem;
+    font-size: 1.6rem;
+    color: var(--black);
+}
+
+
+
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 15rem);
+}
+
+.product .box table {
+    margin: 1rem 0;
+    padding: 1.4rem;
+    border-radius: .5rem;
+    background-color: var(--bg2);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    font-size: 1.8rem;
+    color: var(--letra);
+    width: 100%;
+    text-align: center;
+}
+.product  .box:hover table{
+    border: var(--border-hover);
+}
+
+.product .box table tr th{
+    color: var(--botao);
+    width: fit-content;   
+    margin: 4px;
+    padding: 4px;
+    border: var(--border);
+}
+.product .box table tr td{
+    color: var(--botao);
+    width: fit-content;
+    border: var(--border);
+    color: var(--letra);
+    margin: 4px;
+    padding: 4px;
+}
+.clientes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 15rem);
+}
+
+.clientes .box table {
+    margin: 1rem 0;
+    padding: 1.4rem;
+    border-radius: .5rem;
+    background-color: var(--bg2);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+    font-size: 1.8rem;
+    color: var(--letra);
+    width: 100%;
+    text-align: center;
+}
+.clientes .box:hover table{
+    border: var(--border-hover);
+}
+
+.clientes .box table tr th{
+    color: var(--botao);
+    width: fit-content;   
+    margin: 4px;
+    padding: 4px;
+    border: var(--border);
+}
+.clientes .box table tr td{
+    color: var(--botao);
+    width: fit-content;
+    border: var(--border);
+    color: var(--letra);
+    margin: 4px;
+    padding: 4px;
+}
+
+
+
+/* responsividade */
+@media(max-width:991px){
+    html{
+        font-size: 55%;
+    }
+    .header{
+        padding: 2rem;
+    }
+    section{
+        padding: 3rem 2rem;
+    }
+}
+@media(max-width:768px){
+    html{
+        scroll-padding-top:0;
+    }
+    body{
+        padding-bottom: 6rem;
+    }  
+    #menu-btn{
+        display: inline-block;
+    }
+    
+    .header .navbar{
+        position: absolute;
+        top: 99%;
+        right: 0;
+        left: 0;
+        padding: 1rem;
+        background-color: var(--botao);
+        border-top: .1rem solid rgba(255,255,255,.2);
+        clip-path: polygon(0 0,100% 0, 100% 0, 0 0);transition: .2s linear;
+    }
+    .header .navbar.active{
+        clip-path: polygon(0 0,100% 0, 100% 100%, 0 100%);
+    }
+    .header .navbar a{
+        display: block;
+        margin: 1rem 0;
+        padding: .5rem 0;
+    }
+}
+@media(max-width:450px){
+    html{
+        font-size: 50%;
+    }
+    .product .box-container{
+        grid-template-columns:1fr;
+    }
+}
