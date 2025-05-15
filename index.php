@@ -16,7 +16,7 @@ $result=$conn->query($sql);
 </head>
 <body>
 <header class="header">    
-        <a href="#" class="logo">Filhas de D.Helena</a>
+        <a href="#" class="logo"><img src="logo.png" alt=""></a>
         <nav class="navbar">             
         <a href="#add-product">Adicionar produto</a>         
         <a href="#product">Produtos cadastrados</a>          

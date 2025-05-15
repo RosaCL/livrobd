@@ -103,15 +103,13 @@ h1{
     background: var(--botao);
     box-shadow: var(--box-shadow);
 }
-.header .logo{
+/* .header .logo {
     font-family: var(--logo-font);
     font-size: 2rem;
     font-weight: bolder;
     color: var(--bg);    
-}
-.header .logo i{
-    color: var(--bg);
-}
+} */
+
 .header .navbar a{      
     font-size: 2rem;    
     color: var(--bg2);
