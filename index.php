@@ -23,23 +23,6 @@ $result=$conn->query($sql);
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>  
 </header>
-<section class="add-product" id="add-product">
-    <div class="box">
-        <h1 class="heading">Adicionar Produto</h1>
-        <form action="inserir.php" method="post">
-            <label for="livro">Livro</label>
-            <input class="box" type="text" name="livro" id="livro" placeholder="Livro">
-            <label for="autor">Autor</label>
-            <input class="box" type="text" name="autor" id="autor" placeholder="Autor">
-            <label for="genero">Gênero</label>
-            <input class="box" type="text" name="genero" id="genero" placeholder="Gênero">
-            <label for="ano">Ano</label>
-            <input class="box" type="number" name="ano" id="ano" placeholder="Ano">
-            <input class="btn" type="submit" value="Enviar">
-        </form>
-    </div>
-
-</section>
 <section class="product" id="product">
     <div class="box">
     <h1 class="heading"> Produtos Cadastrados</h1>
@@ -59,8 +42,8 @@ $result=$conn->query($sql);
                 <td><?=$product['genero']?></td>
                 <td><?=$product['ano']?></td>
                 <td>
-                <a class="btn" href="update.php?id=<?= $produto['id'] ?>">Editar</a> 
-                <a class="delete-btn" href="delete.php?id=<?= $produto['id'] ?>" onclick="return confirm('Deseja deletar?')">Deletar</a>
+                <a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a> 
+                <a class="delete-btn" href="delete.php?id=<?= $product['id'] ?>" onclick="return confirm('Deseja deletar?')">Deletar</a>
             </td>
             </tr>
             <?php endwhile; ?>
@@ -68,5 +51,22 @@ $result=$conn->query($sql);
         </table>
     </div>
 </section> 
+<section class="add-product" id="add-product">
+    <div class="box">
+        <h1 class="heading">Adicionar Produto</h1>
+        <form action="inserir.php" method="post">
+            <label for="livro">Livro</label>
+            <input class="box" type="text" name="livro" id="livro" placeholder="Livro">
+            <label for="autor">Autor</label>
+            <input class="box" type="text" name="autor" id="autor" placeholder="Autor">
+            <label for="genero">Gênero</label>
+            <input class="box" type="text" name="genero" id="genero" placeholder="Gênero">
+            <label for="ano">Ano</label>
+            <input class="box" type="number" name="ano" id="ano" placeholder="Ano">
+            <input class="btn" type="submit" value="Enviar">
+        </form>
+    </div>
+
+</section>
 </body>
 </html>
