@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar'])){
     && !empty ($_POST['quantidade'])
     && !empty($_POST['preco'])
     && !empty($_POST['id_genero'])){
-        $stmt = $pdo->prepare("INSERT INTO produto (livro, autor,quantidade , preco, id_genero) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO produto (livro, autor, quantidade , preco, id_genero) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$_POST['livro'], 
         $_POST['autor'], 
         $_POST['quantidade'],
@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_genero'])){
-    $stmt = $pdo->prepare("UPDATE genero SET nome = ? WHERE id = ?");
-    ($stmt->execute([$_POST[ 'nome'], $_POST ['id']]));
+    $stmt = $pdo->prepare("UPDATE genero SET nome = ? WHERE id_genero = ?");
+    ($stmt->execute([$_POST[ 'nome'], $_POST ['id_genero']]));
     header("Location: index.php");
     exit();
 }
@@ -54,8 +54,9 @@ if (isset($_GET['delete'])){
     header("Location: index.php");
     exit();    
 }
+
 if (isset($_GET['delete_genero'])){
-    $stmt=$pdo->prepare("DELETE FROM genero WHERE id=?");
+    $stmt=$pdo->prepare("DELETE FROM genero WHERE id_genero=?");
     $stmt->execute([$_GET['delete']]);
     header("Location: index.php");
     exit();    
@@ -83,6 +84,6 @@ if(isset($_GET['filtro'])){
     }
 }
 
-$produtos = $pdo->query("SELECT product.*, gender.nome AS genero FROM produto product JOIN genero gender ON product.id_genero = gender.id ORDER BY $order")->fetchAll(PDO::FETCH_ASSOC);
+$produtos = $pdo->query("SELECT product.*, gender.nome AS genero FROM produto product JOIN genero gender ON product.id_genero = gender.id_genero ORDER BY $order")->fetchAll(PDO::FETCH_ASSOC);
 $generos = $pdo->query("SELECT * FROM genero")->fetchAll(PDO::FETCH_ASSOC);
 ?>

@@ -51,13 +51,13 @@ include('/laragon/www/livrobd/api/logic.php');
             <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010" required maxlength="10" min="0" max="9999999999" required>
 
             <select class="box" name="id" required>
-                    <option class="box" value="<?= $genero['id'] ?>">Gênero</option>
+                    <option class="box" value="<?= $genero['id_genero'] ?>">Gênero</option>
                     <?php foreach ($generos as $genero): ?>
-                        <option value="<?= $genero['id'] ?>"><?= $genero['nome'] ?></option>
+                        <option value="<?= $genero['id_genero'] ?>"><?= $genero['nome'] ?></option>
                     <?php endforeach; ?>
             </select>
 
-            <input class="btn" name="adicionar_genero" type="submit" value="Enviar">
+            <input class="btn" type="submit" name="adicionar" value="Enviar">
         </form>
     </div>
 
@@ -99,12 +99,18 @@ include('/laragon/www/livrobd/api/logic.php');
                             <td><?= $product['quantidade']; ?></td>
                             <td>R$<?= number_format($product['preco'], 2, ',', '.') ?></td>
                             <td><?= $product['genero']; ?></td>
-                            <td><a class="btn" href="./update.php">Editar</a><a class="delete-btn" href="?delete=<?= $product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>
+                            <td><a class="btn" href="?update=<?= $product['id']; ?> ">Editar</a><a class="delete-btn" href="?delete=<?= $product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>
                         </tr>
                     <?php endforeach; ?>
+
+
+
+
+                    
                 </table>
     </div>
     <div class="box">
+        <?php foreach ($produtos as $product): ?>
         <form method="POST">
 
         <input class="box" type="hidden" name="id" value="<?= $product['id'] ?>">
@@ -121,14 +127,15 @@ include('/laragon/www/livrobd/api/logic.php');
         <label for="preco">Preço</label>
         <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010" maxlength="10" min="0" max="9999999999" value="<?= $product['preco'] ?>">
 
-        <select class="box" name="id" required>
-            <option class="box" value="<?= $genero['id'] ?>">Gênero</option>
+        <select class="box" name="id_genero" required>
+            <option class="box" value="<?= $genero['id_genero'] ?>">Gênero</option>
             <?php foreach ($generos as $genero): ?>
-                <option value="<?= $genero['id'] ?>"><?= $genero['nome'] ?></option>
+                <option value="<?= $genero['id_genero'] ?>"><?= $genero['nome'] ?></option>
             <?php endforeach; ?>
         </select>
         <input class="btn" name="update" type="submit" value="Atualizar">
         </form>
+        <?php endforeach; ?>
     </div>
 </section> 
 
