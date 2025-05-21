@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar'])){
 }
 
 
-if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar'])){
+if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar_genero'])){
     if(!empty($_POST['nome'])){
         $stmt = $pdo->prepare("INSERT INTO genero (nome) VALUES (?)");
         $stmt->execute([$_POST['nome']]);
@@ -39,8 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
     exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
-    $stmt = $pdo->prepare("UPDATE genero SET nome = ?, WHERE id = ?");
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_genero'])){
+    $stmt = $pdo->prepare("UPDATE genero SET nome = ? WHERE id = ?");
     ($stmt->execute([$_POST[ 'nome'], $_POST ['id']]));
     header("Location: index.php");
     exit();
@@ -54,7 +54,7 @@ if (isset($_GET['delete'])){
     header("Location: index.php");
     exit();    
 }
-if (isset($_GET['delete'])){
+if (isset($_GET['delete_genero'])){
     $stmt=$pdo->prepare("DELETE FROM genero WHERE id=?");
     $stmt->execute([$_GET['delete']]);
     header("Location: index.php");
@@ -62,14 +62,14 @@ if (isset($_GET['delete'])){
 }
 
 //SELEÇÃO
-$order = "product.nome ASC";
+$order = "product.livro ASC";
 if(isset($_GET['filtro'])){
     switch ($_GET['filtro']){
         case 'crescente':
-            $order = "product.nome ASC";
+            $order = "product.livro ASC";
             break;
         case 'decrescente':
-            $order = "product.nome DESC";
+            $order = "product.livro DESC";
             break;
         case 'crescente_quantidade':
             $order = "product.quantidade ASC";
@@ -85,13 +85,4 @@ if(isset($_GET['filtro'])){
 
 $produtos = $pdo->query("SELECT product.*, gender.nome AS genero FROM produto product JOIN genero gender ON product.id_genero = gender.id ORDER BY $order")->fetchAll(PDO::FETCH_ASSOC);
 $generos = $pdo->query("SELECT * FROM genero")->fetchAll(PDO::FETCH_ASSOC);
-
-
-
-
-
-
-
-
-
 ?>

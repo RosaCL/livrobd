@@ -13,6 +13,8 @@ include('/laragon/www/livrobd/api/logic.php');
     <title>Filhas de D.Helena</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./ressources/css/index.css">
+    <link rel="stylesheet" href="./ressources/css/add-product.css">
+    <link rel="stylesheet" href="./ressources/css/product.css">
 </head>
 <body>
 <header class="header">    
@@ -23,41 +25,13 @@ include('/laragon/www/livrobd/api/logic.php');
         </nav>
         <div id="menu-btn" class="fas fa-bars"></div>  
 </header>
-<section class="product" id="product">
-    <div class="box">
-    <h1 class="heading"> Produtos Cadastrados</h1>
-    <table>
-            <tr>
-                <th>ID</th>
-                <th>Livro</th>
-                <th>Autor</th>
-                <th>Gênero</th>
-                <th>Ano</th>    
-            </tr>
-            <?php while ($product=$result->fetch_assoc()):?>
-            <tr>
-                <td><?=$product['id']?></td>
-                <td><?=$product['livro']?></td>
-                <td><?=$product['autor']?></td>
-                <td><?=$product['genero']?></td>
-                <td><?=$product['ano']?></td>
-                <td>
-                <a class="btn" href="update.php?id=<?= $product['id'] ?>">Editar</a> 
-                <a class="delete-btn" href="delete.php?id=<?= $product['id'] ?>" onclick="return confirm('Deseja deletar?')">Deletar</a>
-            </td>
-            </tr>
-            <?php endwhile; ?>
-
-        </table>
-    </div>
-</section> 
 <section class="add-product" id="add-product">
     <div class="box">
         <h1 class="heading">Adicionar Gênero</h1>
         <form method="post">
             <label for="genero">Gênero</label>
             <input class="box" type="text" name="nome" id="nome" placeholder="Gênero">
-            <input class="btn" type="submit" name="adicionar" value="Enviar">
+            <input class="btn" type="submit" name="adicionar_genero" value="Enviar">
         </form>
     </div>
 
@@ -83,9 +57,14 @@ include('/laragon/www/livrobd/api/logic.php');
                     <?php endforeach; ?>
             </select>
 
-            <input class="btn" name="adicionar" type="submit" value="Enviar">
+            <input class="btn" name="adicionar_genero" type="submit" value="Enviar">
         </form>
     </div>
+
+
+
+</section>
+<section class="product" id="product">
     <div class="box">
         
                 <form method="get">
@@ -97,12 +76,10 @@ include('/laragon/www/livrobd/api/logic.php');
                         <option class="box" value="decrescente_quantidade">Decrescente de quantidade (↓)</option>
                         <option class="box" value="id">ID</option>
                     </select>
-                </form>
-
-            
+                </form>            
     </div>
-    div class="box">
-                <h2>Produtos Cadastrados</h2>
+    <div class="box">
+        <h2>Produtos Cadastrados</h2>
                 <table>
                     <tr>
                         <th>ID</th>
@@ -126,35 +103,34 @@ include('/laragon/www/livrobd/api/logic.php');
                         </tr>
                     <?php endforeach; ?>
                 </table>
+    </div>
+    <div class="box">
+        <form method="POST">
 
-            </div>
-            <div class="box">
-                <form method="POST">
+        <input class="box" type="hidden" name="id" value="<?= $product['id'] ?>">
 
-                    <input class="box" type="hidden" name="id" value="<?= $product['id'] ?>">
+        <label for="livro">Livro</label>
+        <input class="box" type="text" name="livro" id="livro" placeholder="Livro" value="<?= $product['livro'] ?>">
 
-                    <label for="livro">Livro</label>
-                    <input class="box" type="text" name="livro" id="livro" placeholder="Livro" value="<?= $product['livro'] ?>">
+        <label for="autor">Autor</label>
+        <input class="box" type="text" name="autor" id="autor" placeholder="Autor" value="<?= $product['autor'] ?>">
 
-                    <label for="autor">Autor</label>
-                    <input class="box" type="text" name="autor" id="autor" placeholder="Autor" value="<?= $product['autor'] ?>">
+        <label for="quantidade">Quantidade</label>
+        <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade" value="<?= $product['quantidade'] ?>">
+        
+        <label for="preco">Preço</label>
+        <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010" maxlength="10" min="0" max="9999999999" value="<?= $product['preco'] ?>">
 
-                    <label for="quantidade">Quantidade</label>
-                    <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade" value="<?= $product['quantidade'] ?>">
-                    
-                    <label for="preco">Preço</label>
-                    <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010" maxlength="10" min="0" max="9999999999" value="<?= $product['preco'] ?>">
+        <select class="box" name="id" required>
+            <option class="box" value="<?= $genero['id'] ?>">Gênero</option>
+            <?php foreach ($generos as $genero): ?>
+                <option value="<?= $genero['id'] ?>"><?= $genero['nome'] ?></option>
+            <?php endforeach; ?>
+        </select>
+        <input class="btn" name="update" type="submit" value="Atualizar">
+        </form>
+    </div>
+</section> 
 
-                    <select class="box" name="id" required>
-                        <option class="box" value="<?= $genero['id'] ?>">Gênero</option>
-                        <?php foreach ($generos as $genero): ?>
-                            <option value="<?= $genero['id'] ?>"><?= $genero['nome'] ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <input class="btn" name="update" type="submit" value="Atualizar">
-                </form>
-            </div>
-
-</section>
 </body>
 </html>
