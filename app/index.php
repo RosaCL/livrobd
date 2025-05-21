@@ -1,6 +1,7 @@
 <?php
 include('/laragon/www/livrobd/api/config.php');
 include('/laragon/www/livrobd/api/logic.php');
+include ('/laragon/www/livrobd/api/logicgenero.php');
 
 
 ?>
