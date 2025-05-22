@@ -21,7 +21,7 @@ include('/laragon/www/livrobd/api/logicgenero.php');
 
 <body>
     <header class="header">
-        <a href="#" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
+        <a href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
             <a href="#add-product">Adicionar produto</a>
             <a href="#product">Produtos cadastrados</a>
@@ -102,7 +102,7 @@ include('/laragon/www/livrobd/api/logicgenero.php');
                         <td><?= $product['quantidade']; ?></td>
                         <td>R$<?= number_format($product['preco'], 2, ',', '.') ?></td>
                         <td><?= $product['genero']; ?></td>
-                        <td><a class="btn" href="?update=<?= $product['id']; ?> ">Editar</a><a class="delete-btn" href="?delete=<?= $product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>
+                        <td><a class="btn" href="update.php">Editar</a><a class="delete-btn" href="?delete=<?= $product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>
                     </tr>
                 <?php endforeach; ?>
 
@@ -126,7 +126,7 @@ include('/laragon/www/livrobd/api/logicgenero.php');
                     <tr>
                         <td><?= $genero['id_genero']; ?></td>
                         <td><?= $genero['nome']; ?></td>
-                        <td><a class="btn" href="?update_genero=<?= $genero['id_genero']; ?>">Editar</a><a class="delete-btn" href="?delete_genero=<?= $genero['id_genero']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>
+                        <td><a class="btn" href="update.php">Editar</a><a class="delete-btn" href="?delete_genero=<?= $genero['id_genero']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
