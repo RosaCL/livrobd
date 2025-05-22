@@ -30,48 +30,48 @@ include('/laragon/www/livrobd/api/logicgenero.php');
     </header>
 
     <section class="add-product" id="add-product">
-        <?php if ($productToEdit): ?>
-            <div class="box">
-                <h1 class="heading">Editar Produto</h1>
-                <form method="POST">
-                    <input class="box" type="hidden" name="id" value="<?= $productToEdit['id'] ?>">
 
-                    <label for="livro">Livro</label>
-                    <input class="box" type="text" name="livro" id="livro" placeholder="Livro" value="<?= $productToEdit['livro'] ?>">
+        <div class="box">
+            <h1 class="heading">Editar Produto</h1>
+            
+            <form method="POST">
+                <input class="box" type="hidden" name="id" value="<?= $product['id'] ?>">
 
-                    <label for="autor">Autor</label>
-                    <input class="box" type="text" name="autor" id="autor" placeholder="Autor" value="<?= $productToEdit['autor'] ?>">
+                <label for="livro">Livro</label>
+                <input class="box" type="text" name="livro" id="livro" placeholder="Livro" value="<?= $product['livro'] ?>">
 
-                    <label for="quantidade">Quantidade</label>
-                    <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade" value="<?= $productToEdit['quantidade'] ?>">
+                <label for="autor">Autor</label>
+                <input class="box" type="text" name="autor" id="autor" placeholder="Autor" value="<?= $product['autor'] ?>">
 
-                    <label for="preco">Preço</label>
-                    <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010" maxlength="10" min="0" max="9999999999" value="<?= $productToEdit['preco'] ?>">
+                <label for="quantidade">Quantidade</label>
+                <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade" value="<?= $product['quantidade'] ?>">
 
-                    <select class="box" name="id_genero" required>
-                        <option class="box" value="">Selecione o Gênero</option>
-                        <?php foreach ($generos as $genero): ?>
-                            <option value="<?= $genero['id_genero'] ?>" <?= ($genero['id_genero'] == $productToEdit['id_genero']) ? 'selected' : '' ?>>
-                                <?= $genero['nome'] ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <input class="btn" name="update" type="submit" value="Atualizar">
-                </form>
-            </div>
-        <?php endif; ?>
-        <?php if ($generoToEdit): ?>
+                <label for="preco">Preço</label>
+                <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010" maxlength="10" min="0" max="9999999999" value="<?= $product['preco'] ?>">
+
+                <select class="box" name="id_genero" required>
+                    <option class="box" value="<?= $genero['id_genero'] ?>">Gênero</option>
+                    <?php foreach ($genero as $genero): ?>
+                        <option value="<?= $categoria['id_genero'] ?>"><?= $genero['nome'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <input class="btn" name="update" type="submit" value="Atualizar">
+            </form>
+        
+        </div>
+        
             <div class="box">
                 <h1 class="heading">Editar Gênero</h1>
+                <?php foreach ($generos as $genero): ?>
                 <form method="POST">
-                    <input class="box" type="hidden" name="id" value="<?= $productToEdit['id_genero'] ?>">
+                    <input class="box" type="hidden" name="id" value="<?= $genero['id_genero'] ?>">
 
-                    <label for="livro">Livro</label>
-                    <input class="box" type="text" name="nome" id="nome" placeholder="Nome" value="<?= $generoToEdit['nome'] ?>">
+                    <label for="livro">Gênero</label>
+                    <input class="box" type="text" name="nome" id="nome" placeholder="Nome" value="<?= $genero['nome'] ?>">
                     <input class="btn" name="update_genero" type="submit" value="Atualizar">
+                    <?php endforeach; ?>
                 </form>
             </div>
-        <?php endif; ?>
     </section>
 
 </body>

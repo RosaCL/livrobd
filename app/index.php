@@ -132,36 +132,6 @@ include('/laragon/www/livrobd/api/logicgenero.php');
             </table>
 
         </div>
-        <?php if ($productToEdit): ?>
-            <div class="box">
-                <h1 class="heading">Editar Produto</h1>
-                <form method="POST">
-                    <input class="box" type="hidden" name="id" value="<?= $productToEdit['id'] ?>">
-
-                    <label for="livro">Livro</label>
-                    <input class="box" type="text" name="livro" id="livro" placeholder="Livro" value="<?= $productToEdit['livro'] ?>">
-
-                    <label for="autor">Autor</label>
-                    <input class="box" type="text" name="autor" id="autor" placeholder="Autor" value="<?= $productToEdit['autor'] ?>">
-
-                    <label for="quantidade">Quantidade</label>
-                    <input class="box" type="number" name="quantidade" id="quantidade" placeholder="Quantidade" value="<?= $productToEdit['quantidade'] ?>">
-
-                    <label for="preco">Preço</label>
-                    <input class="box" type="number" name="preco" id="preco" placeholder="Preço" step="0.010" maxlength="10" min="0" max="9999999999" value="<?= $productToEdit['preco'] ?>">
-
-                    <select class="box" name="id_genero" required>
-                        <option class="box" value="">Selecione o Gênero</option>
-                        <?php foreach ($generos as $genero): ?>
-                            <option value="<?= $genero['id_genero'] ?>" <?= ($genero['id_genero'] == $productToEdit['id_genero']) ? 'selected' : '' ?>>
-                                <?= $genero['nome'] ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <input class="btn" name="update" type="submit" value="Atualizar">
-                </form>
-            </div>
-        <?php endif; ?>
     </section>
 
 </body>

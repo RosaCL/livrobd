@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar_genero'])){
     }
 }
 
-$generoToEdit = null;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_genero'])){
     $stmt = $pdo->prepare("UPDATE genero SET nome = ? WHERE id_genero = ?");
     ($stmt->execute([$_POST[ 'nome'], $_POST ['id_genero']]));
