@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_genero'])){
 
 if (isset($_GET['delete_genero'])){
     $stmt=$pdo->prepare("DELETE FROM genero WHERE id_genero=?");
-    $stmt->execute([$_GET['delete']]);
+    $stmt->execute([$_GET['delete_genero']]);
     header("Location: index.php");
     exit();    
 }

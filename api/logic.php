@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar'])){
 
 
 //UPDATE
+$productToEdit = null;
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update'])){
     $stmt = $pdo->prepare("UPDATE produto SET livro = ?, autor = ?, quantidade = ?, preco = ?, id_genero = ? WHERE id = ?");
     ($stmt->execute([$_POST[ 'livro'], $_POST ['autor'], $_POST ['quantidade'], $_POST ['preco'], $_POST ['id_genero'], $_POST ['id']]));
