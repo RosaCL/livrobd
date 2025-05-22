@@ -27,6 +27,8 @@ if (isset($_GET['delete_genero'])){
     exit();    
 }
 
+$generos = $pdo->query("SELECT * FROM genero")->fetchAll(PDO::FETCH_ASSOC);
+
 
 
 

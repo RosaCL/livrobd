@@ -68,5 +68,5 @@ if(isset($_GET['filtro'])){
 }
 
 $produtos = $pdo->query("SELECT product.*, gender.nome AS genero FROM produto product JOIN genero gender ON product.id_genero = gender.id_genero ORDER BY $order")->fetchAll(PDO::FETCH_ASSOC);
-$generos = $pdo->query("SELECT * FROM genero")->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
