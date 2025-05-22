@@ -111,6 +111,27 @@ include ('/laragon/www/livrobd/api/logicgenero.php');
                 </table>
     </div>
     <div class="box">
+                <h2>Gênero Cadastrados</h2>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                        
+
+                    </tr>
+                    <?php foreach ($produtos as $product): ?>
+                        <tr>
+                            <td><?= $product['id_genero']; ?></td>
+                            
+                            <td><?= $product['nome']; ?></td>                           
+                            <td><a class="btn" href="./update.php">Editar</a><a class="delete-btn" href="?delete=<?= $product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+
+            </div>
+    <div class="box">
         <?php foreach ($produtos as $product): ?>
         <form method="POST">
 
