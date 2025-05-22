@@ -62,7 +62,7 @@ include('/laragon/www/livrobd/api/logicgenero.php');
 
                 <input class="btn" type="submit" name="adicionar" value="Enviar">
             </form>
-        </div>
+        </div> 
 
 
 
